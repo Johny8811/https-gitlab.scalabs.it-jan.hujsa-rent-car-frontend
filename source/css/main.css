@@ -1,0 +1,60 @@
+body {
+    font-family: 'Lobster', cursive;
+    color: #777777;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    list-style: none;
+    display: inline-block;
+}
+
+nav li {
+    margin-top: 1%;
+    float: left;
+}
+
+nav a img {
+    padding: 0 20px;
+    border-radius: 450px;
+    -webkit-filter: grayscale(100%);
+}
+
+.app{
+    text-align: center;
+    margin: 0 auto;
+}
+
+.app div {
+    margin: inherit;
+}
+
+.home{
+    color: black !important;
+}
+
+.active img{
+    color: red;
+    -webkit-filter: grayscale(1%);
+}
+
+#table{
+    margin: inherit;
+}
+
+#table tr th{
+    padding-right: 200px;
+    border-bottom: 1px solid #444444;
+    min-width: 100px;
+}
+
+#table tr td{
+    padding-right: 200px;
+    border-bottom: 1px solid #eeeeee;
+    min-width: 100px;
+}
+
