@@ -35,11 +35,28 @@ nav a img {
 
 .home{
     color: black !important;
+    margin-left: 10%;
 }
 
 .active img{
     color: red;
     -webkit-filter: grayscale(1%);
+}
+
+.baseForm{
+    margin-top: 10px;
+}
+
+.baseForm input{
+    margin-right: 20px;
+    padding-left: 5px;
+    border: 1px solid #777777;
+    border-radius: 20px;
+}
+
+.baseForm input:focus{
+    outline: none;
+    border: 1px solid #cccccc;
 }
 
 #table{
@@ -58,3 +75,7 @@ nav a img {
     min-width: 100px;
 }
 
+#side {
+    float: right;
+    padding-right: 20px;
+}
