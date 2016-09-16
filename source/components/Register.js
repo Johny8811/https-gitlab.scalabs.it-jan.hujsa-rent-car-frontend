@@ -128,7 +128,7 @@ export default class Register extends React.Component {
             onChange={ this.handlePasswordAgainChange.bind(this) }
           />
           <br />
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Register"/>
         </form>
       </div>
     )

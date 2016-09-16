@@ -16,36 +16,27 @@ import useRelay from 'react-router-relay';
 
 import App from './components/App';
 import Home from './components/Home';
-import Login from './components/Login';
 import Register from './components/Register';
-import Car from './components/Car';
-import Bike from './components/Bike';
+import Car from './components/carComponent/Car';
+import Bike from './components/bikeComponent/Bike';
 
 const ViewerQueries = {
     viewer: () => Relay.QL` query { viewer } `
 };
 
-function token() {
-  if (localStorage.getItem("token")) {
-    return localStorage.getItem("token");
-  } else {
-    return;
-  }
-}
-
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer('http://localhost:2020/graphql', {
+    credentials: 'same-origin',
     headers: {
-      token: token()
+      token: localStorage.getItem("token")
     }
   })
 );
 
 ReactDOM.render(
     <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
-      <Route path="/" component={App}>
+      <Route path="/" component={App} queries={ViewerQueries}>
         <IndexRoute component={Home}/>
-        <Route path="/login" component={Login} queries={ViewerQueries}/>
         <Route path="/register" component={Register} queries={ViewerQueries}/>
         <Route path="/cars" component={Car} queries={ViewerQueries}/>
         <Route path="/bikes" component={Bike} queries={ViewerQueries}/>
@@ -53,7 +44,6 @@ ReactDOM.render(
     </Router>,
     document.getElementById('content')
 );
-
 
 
 

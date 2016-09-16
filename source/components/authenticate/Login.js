@@ -4,19 +4,25 @@
 import React from 'react';
 import Relay from 'react-relay';
 
-import loginMutation from '../mutations/loginMutation';
+import NavLink from '../NavLink';
+
+import login from './authFunction/login';
 
 class Login extends React.Component {
+
   constructor() {
     super();
-    this.state = { username: '', password: '' }
+    this.state = { state: '', username: '', password: '' }
   }
+
   handleNameChange(e) {
     this.setState({ username: e.target.value })
   }
+
   handlePasswordChange(e) {
     this.setState({ password: e.target.value })
   }
+
   handleSubmit(e) {
     e.preventDefault();
     var username = this.state.username.trim();
@@ -24,33 +30,14 @@ class Login extends React.Component {
     if (!username || !password){
       return;
     }
-    console.log(this.props.viewer.loggedIn);
-    Relay.Store.commitUpdate(
-      new loginMutation({
-        id: this.props.viewer.loggedIn.id,
-        username: username,
-        password: password
-      }), {
-        onFailure: (transaction) => {
-            console.log(transaction.getError().source);
-          },
-        onSuccess: (response) => {
-            //console.log(response);
-            localStorage.setItem("token", response.loginUser.loggedIn.token);
-            //console.log(localStorage.getItem("firstname"));
-          }
-        }
-      );
-
-    console.log(this.state.username, this.state.password);
+    const loginArgs =[this.props.loggedIn.id, username, password];
+    login(...loginArgs);
     this.setState({ username: '', password: '' });
   }
-  render() {
-    console.log(this.props.viewer.loggedIn);
-    console.log(localStorage.getItem("token"));
 
+  render() {
     return(
-      <div>
+      <div className="login-slide">
         <form className="baseForm" onSubmit={this.handleSubmit.bind(this)}>
           <input
             type="text"
@@ -65,7 +52,9 @@ class Login extends React.Component {
             onChange={ this.handlePasswordChange.bind(this) }
           />
           <br />
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Login"/><br /><br />
+          Or<br /><br />
+          <NavLink to="/register" title="Register">Register</NavLink>
         </form>
       </div>
     )
@@ -74,17 +63,15 @@ class Login extends React.Component {
 
 export default Relay.createContainer(Login, {
   fragments: {
-    viewer: () => Relay.QL`
-      fragment on ViewerType{
+    loggedIn: () => Relay.QL`
+      fragment on LoggedInType{
         id
-        loggedIn {
-          id
+        user{
           firstname
           lastname
           username
           email
           role
-          token
         }
       }
     `

@@ -3,6 +3,11 @@ body {
     color: #777777;
 }
 
+input {
+    font-family: 'Lobster', cursive;
+    color: black;
+}
+
 a{
     text-decoration: none;
     color: black;
@@ -18,15 +23,10 @@ nav li {
     float: left;
 }
 
-nav a img {
-    padding: 0 20px;
-    border-radius: 450px;
-    -webkit-filter: grayscale(100%);
-}
-
 .app{
     text-align: center;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .app div {
@@ -35,12 +35,6 @@ nav a img {
 
 .home{
     color: black !important;
-    margin-left: 10%;
-}
-
-.active img{
-    color: red;
-    -webkit-filter: grayscale(1%);
 }
 
 .baseForm{
@@ -54,10 +48,100 @@ nav a img {
     border-radius: 20px;
 }
 
+.baseForm a{
+    margin-right: 20px;
+    padding-left: 5px;
+    border: 1px solid #777777;
+    border-radius: 20px;
+    background-color: #dddddd;
+}
+
 .baseForm input:focus{
     outline: none;
     border: 1px solid #cccccc;
 }
+
+.dropdown {
+    display: none;
+}
+
+.dropdown li {
+    padding-top: 10px;
+    float: none;
+    list-style: none;
+}
+
+.active img {
+    color: red;
+    -webkit-filter: grayscale(1%) !important;
+}
+
+/* start main nav bar */
+#main {
+    margin-left: 70px;
+}
+
+#main img {
+    padding: 0 20px;
+    border-radius: 450px;
+    -webkit-filter: grayscale(100%);
+}
+/* end main nav bar */
+
+
+/* start side nav bar */
+#side {
+    position: static;
+    float: right;
+    padding-right: 40px;
+}
+
+#side img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+#side li img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+/* active user control */
+#led {
+    margin-top: -8px;
+    width: 8px;
+    height: 8px;
+    background-color: #008800;
+    border-radius: 20px;
+}
+/* end side nav bar */
+
+
+/* -------------------------- */
+.login-slide {
+    position: relative;
+    right: -100%;
+}
+#children {
+    position: relative;
+    margin: -120px auto 0;
+    right: 0%;
+}
+
+#slider {
+    position: relative;
+    right: 0%;
+    /*margin-right: -230px;*/
+    /*height: 100%;*/
+    background: #bbbbbb;
+}
+/* -------------------------- */
+
+
+
+
 
 #table{
     margin: inherit;
@@ -66,16 +150,45 @@ nav a img {
 #table tr th{
     padding-right: 200px;
     border-bottom: 1px solid #444444;
+    width: 100px;
     min-width: 100px;
 }
 
 #table tr td{
-    padding-right: 200px;
+    text-align: left;
     border-bottom: 1px solid #eeeeee;
+    width: 100px;
     min-width: 100px;
+
 }
 
-#side {
-    float: right;
-    padding-right: 20px;
+
+
+
+
+
+
+
+@media only screen and (max-width: 740px) {
+    #side {
+        float: none;
+    }
+    nav {
+        list-style: none;
+        display: inline-block;
+    }
+    #main {
+        margin-left: 0px;
+    }
 }
+
+/*@media only screen and (max-width: 887px) {*/
+    /*#side {*/
+        /*float: none;*/
+        /*margin-left: 2%;*/
+    /*}*/
+
+    /*#main {*/
+        /*margin-left: 0%;*/
+    /*}*/
+/*}*/
