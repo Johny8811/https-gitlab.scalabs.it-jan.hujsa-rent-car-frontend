@@ -4,31 +4,31 @@
 import React from 'react';
 import Relay from 'react-relay';
 
-import AddCarFormComponent from './AddCarFormComponent';
+import AddCarFormComponent from './AddCarFormComponent.jsx';
 
 class Car extends React.Component {
   loggedInUser() {
     const user = this.props.viewer.loggedIn.user;
-    if (user.role == 'admin') {
+    if (user.role === 'admin') {
       return <AddCarFormComponent viewer={this.props.viewer} />;
     }
+    return false;
   }
   render() {
-    var cars = this.props.viewer.cars.edges.map((car) => {
-      return (
-        <tr key={car.node.id}>
-          <td>{car.node.brand}</td>
-          <td>{car.node.power}</td>
-          <td>{car.node.distributor.map(dist => {
-              return (
-                <span key={dist.__dataID__}>
-                  {dist.distributor + " "}
-                </span>
-              )
-          })}</td>
-        </tr>
+    console.log(this.props.viewer.cars);
+    var cars = this.props.viewer.cars.edges.map((car) => (
+      <tr key={car.node.id}>
+        <td>{car.node.brand}</td>
+        <td>{car.node.power}</td>
+        <td>{car.node.distributor.map(dist => (
+          <span key={dist.id}>
+            {`${dist.distributor} `}
+          </span>
+          )
+        )}</td>
+      </tr>
       )
-    });
+    );
     return (
       <div>
         <table id="table">
@@ -47,6 +47,10 @@ class Car extends React.Component {
   }
 }
 
+Car.propTypes = {
+  viewer: React.PropTypes.object
+};
+
 export default Relay.createContainer(Car, {
   fragments: {
     viewer: () => Relay.QL`
@@ -61,13 +65,14 @@ export default Relay.createContainer(Car, {
               email
             }
           }
-        cars(first: 2222) {
+        cars(first: 999) {
           edges{
             node{
               id
               brand
               power
               distributor {
+                id
                 distributor
               }
             }

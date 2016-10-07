@@ -4,17 +4,9 @@
 import React from 'react';
 import Relay from 'react-relay';
 
-import $ from 'jquery';
-
-import logout from './../authenticate/authFunction/logout';
+import logout from './../../authenticate/authFunction/logout.jsx';
 
 export default class DropDown extends React.Component {
-
-  componentDidMount(){
-    $("#login").on('click', () => {
-      $(".dropdown").slideToggle(200);
-    })
-  }
 
   logout() {
     const loggedInID = this.props.loggedInID;

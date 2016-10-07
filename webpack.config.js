@@ -4,11 +4,11 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, "source/index.js"),
+    entry: path.resolve(__dirname, "source/index.jsx"),
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx$/,
                 exclude: /node_modules/,
                 loader: "babel"
             }

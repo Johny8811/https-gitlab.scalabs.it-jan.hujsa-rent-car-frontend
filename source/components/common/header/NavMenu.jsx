@@ -3,33 +3,19 @@
  */
 import React from 'react';
 import Relay from 'react-relay';
-import $ from 'jquery';
+import { Link } from 'react-router';
 
-import NavLink from '../NavLink';
+import NavLink from '../../NavLink.jsx';
 
-import RightSide from './RightSide';
-
-
-import jQuery from '../../jquery/jQuery';
-
+import RightSide from './RightSide.jsx';
 
 class NavMenu extends React.Component {
-   slide() {
-    $(document).ready(() => {      // tento kus jQuery presunut do vlastneho file, aby bolo mozne volat ju odkialkolvek
-      if ($(".login-slide").css("right") != "0px"){
-        $("#children").animate({"right": "100%"}, 400);
-        $(".login-slide").animate({"right": "0%"}, 400);
-      } else {
-         $("#children").animate({"right": "0%"}, 400);
-         $(".login-slide").animate({"right": "-100%"}, 400);
-      }
-    })
-  };
 
   link(loggedIn) {
     const user = loggedIn.user;
     if (user.role == 'guest') {
-      return <img id="login" onClick={this.slide} src="../../../asset/images/avatar.png" />;
+      return <Link to="/login"><img src="../../../asset/images/avatar.png" /></Link>;
+
     }
     else {
       return <RightSide loggedIn={loggedIn.id} />
@@ -37,7 +23,7 @@ class NavMenu extends React.Component {
   }
   render() {
     return(
-      <span>
+      <div>
         <h1><NavLink to="/" className="home">Rent a Car</NavLink></h1>
         <nav id="side">
           {this.link(this.props.loggedIn)}
@@ -46,7 +32,7 @@ class NavMenu extends React.Component {
           <li><NavLink to="/cars"><img src="../../../asset/images/lambo.jpg"/></NavLink></li>
           <li><NavLink to="/bikes"><img src="../../../asset/images/motorka.jpg"/></NavLink></li>
         </nav>
-      </span>
+      </div>
     )
   }
 }
@@ -67,3 +53,4 @@ export default Relay.createContainer(NavMenu, {
     `
   }
 })
+//return <Link to="/login"><img src="../../../asset/images/avatar.png" /></Link>;

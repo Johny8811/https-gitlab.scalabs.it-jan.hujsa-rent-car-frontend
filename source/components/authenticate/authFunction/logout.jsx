@@ -3,7 +3,7 @@
  */
 import Relay from 'react-relay';
 
-import logoutMutation from '../../../mutations/logoutMutation';
+import logoutMutation from '../../../mutations/logoutMutation.jsx';
 
 export default function (loggedInID) {
     Relay.Store.commitUpdate(

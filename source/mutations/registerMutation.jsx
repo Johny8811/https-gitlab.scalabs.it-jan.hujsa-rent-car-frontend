@@ -14,7 +14,7 @@ export default class AddBikeMutation extends Relay.Mutation {
       lastname: this.props.lastname,
       username: this.props.username,
       email: this.props.email,
-      passwordHash: this.props.password
+      password: this.props.password
     };
   }
 

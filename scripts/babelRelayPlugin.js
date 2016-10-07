@@ -1,7 +1,7 @@
 /**
  * Created by Jan on 7.8.2016.
  */
-    // NESKOR sa pohrat s ES6 ! tento zapis je strasny
+    // NESKOR sa pohrat s ES6 !
 //import fs from 'fs';
 //import path from 'path';
 //import babelRelayPlugin from 'babel-relay-plugin';
@@ -26,7 +26,7 @@ var babelRelayPlugin   = require('babel-relay-plugin');
 var introspectionQuery = require('graphql/utilities').introspectionQuery;
 var request            = require('sync-request');
 
-var graphqlUrl = 'http://localhost:2020/graphql';
+var graphqlUrl = 'http://localhost:3000/graphql';
 var response = request('GET', graphqlUrl, {
     qs: {
         query: introspectionQuery

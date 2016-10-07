@@ -1,10 +1,12 @@
 body {
-    font-family: 'Lobster', cursive;
+    font-family: 'Josefin Slab', serif;
+    font-size: 16px;
     color: #777777;
 }
 
 input {
-    font-family: 'Lobster', cursive;
+    font-family: 'Josefin Slab', serif;
+    font-size: 16px;
     color: black;
 }
 
@@ -37,43 +39,53 @@ nav li {
     color: black !important;
 }
 
-.baseForm{
-    margin-top: 10px;
+/* error messages */
+.validation-error {
+    position: absolute;
+    margin-top: 2px;
+    margin-left: -92px;
+    color: red;
+    border-bottom: 1px solid red;
+}
+/* end error messages */
+
+/* start base from */
+.baseForm {
+    margin-top: 20px;
 }
 
-.baseForm input{
+.baseForm input {
     margin-right: 20px;
     padding-left: 5px;
     border: 1px solid #777777;
-    border-radius: 20px;
 }
 
-.baseForm a{
-    margin-right: 20px;
-    padding-left: 5px;
-    border: 1px solid #777777;
-    border-radius: 20px;
-    background-color: #dddddd;
+.baseForm input:disabled {
+    background-color: #eeeeee;
+    color: #cccccc;
+    border-color: #cccccc;
 }
 
 .baseForm input:focus{
     outline: none;
     border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+/* end base from */
+
+.active img {
+    color: red;
+    -webkit-filter: grayscale(1%) !important;
 }
 
 .dropdown {
-    display: none;
+    overflow: hidden;
 }
 
 .dropdown li {
     padding-top: 10px;
     float: none;
     list-style: none;
-}
-
-.active img {
-    color: red;
-    -webkit-filter: grayscale(1%) !important;
 }
 
 /* start main nav bar */
@@ -118,31 +130,6 @@ nav li {
 }
 /* end side nav bar */
 
-
-/* -------------------------- */
-.login-slide {
-    position: relative;
-    right: -100%;
-}
-#children {
-    position: relative;
-    margin: -120px auto 0;
-    right: 0%;
-}
-
-#slider {
-    position: relative;
-    right: 0%;
-    /*margin-right: -230px;*/
-    /*height: 100%;*/
-    background: #bbbbbb;
-}
-/* -------------------------- */
-
-
-
-
-
 #table{
     margin: inherit;
 }
@@ -159,15 +146,48 @@ nav li {
     border-bottom: 1px solid #eeeeee;
     width: 100px;
     min-width: 100px;
+}
 
+/* animation */
+.dropDown-enter {
+    height: 0px;
+}
+
+.dropDown-enter.dropDown-enter-active {
+    height: 100px;
+    transition: height 200ms ease;
+}
+
+.dropDown-leave {
+    height: 100px;
+}
+
+.dropDown-leave.dropDown-leave-active {
+    height: 0px;
+    transition: height 200ms ease;
 }
 
 
 
+.slide-enter {
+    right: -100%;
+}
 
+.slide-enter.slide-enter-active {
+    right: -580px;
+    transition: right 2000ms ease;
 
+}
 
+.slide-leave {
+    right: -580px;
+}
 
+.slide-leave.slide-leave-active {
+    right: -100%;
+    transition: right 2000ms ease;
+}
+/* end animation */
 
 @media only screen and (max-width: 740px) {
     #side {
