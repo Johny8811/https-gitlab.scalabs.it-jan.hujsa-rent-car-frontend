@@ -2,7 +2,6 @@
  * Created by Jan on 23.8.2016.
  */
 import React from 'react';
-import Relay from 'react-relay';
 
 import logout from './../../authenticate/authFunction/logout.jsx';
 
@@ -16,10 +15,15 @@ export default class DropDown extends React.Component {
   render() {
     return(
       <div className="dropdown">
-        <li title="Profile" ><img src="../../asset/images/settings.png" /></li>
-        <li title="Logout" onClick={this.logout.bind(this)}><img src="../../asset/images/logout.png" /></li>
+        <li title="Profile" ><img src="../../asset/images/settings.png" alt="Profile" /></li>
+        <li title="Logout" onClick={ () => this.logout() }>
+          <img src="../../asset/images/logout.png" alt="Logout" />
+        </li>
       </div>
     )
   }
 }
 
+DropDown.propTypes = {
+  loggedInID: React.PropTypes.string
+};

@@ -13,13 +13,10 @@ class NavMenu extends React.Component {
 
   link(loggedIn) {
     const user = loggedIn.user;
-    if (user.role == 'guest') {
-      return <Link to="/login"><img src="../../../asset/images/avatar.png" /></Link>;
-
+    if (user.role === 'guest') {
+      return <Link to="/login"><img src="../../../asset/images/avatar.png" alt="Login" /></Link>;
     }
-    else {
-      return <RightSide loggedIn={loggedIn.id} />
-    }
+    return <RightSide loggedIn={loggedIn.id} />
   }
   render() {
     return(
@@ -29,13 +26,25 @@ class NavMenu extends React.Component {
           {this.link(this.props.loggedIn)}
         </nav>
         <nav id="main">
-          <li><NavLink to="/cars"><img src="../../../asset/images/lambo.jpg"/></NavLink></li>
-          <li><NavLink to="/bikes"><img src="../../../asset/images/motorka.jpg"/></NavLink></li>
+          <li>
+            <NavLink to="/cars">
+              <img src="../../../asset/images/lambo.jpg" alt="Cars" />
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/bikes">
+              <img src="../../../asset/images/motorka.jpg" alt="Bikes" />
+            </NavLink>
+          </li>
         </nav>
       </div>
     )
   }
 }
+
+NavMenu.propTypes = {
+  loggedIn: React.PropTypes.object
+};
 
 export default Relay.createContainer(NavMenu, {
   fragments: {

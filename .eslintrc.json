@@ -24,9 +24,9 @@
         "varsIgnorePattern": "^_"
       }
     ],
-    "semi": [
+    "semi-spacing": [
       2,
-      "always"
+      {"before": false, "after": true}
     ],
     "no-console": 0,
     "id-length": [

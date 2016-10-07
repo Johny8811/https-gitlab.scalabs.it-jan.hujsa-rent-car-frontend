@@ -5,6 +5,13 @@ import React from 'react';
 import Formsy from 'formsy-react';
 
 const Input = React.createClass({
+  propTypes: {
+    type: React.PropTypes.string,
+    name: React.PropTypes.string,
+    className: React.PropTypes.string,
+    title: React.PropTypes.string,
+    placeholder: React.PropTypes.string
+  },
 
   // Add the Formsy Mixin
   mixins: [Formsy.Mixin],
@@ -21,8 +28,8 @@ const Input = React.createClass({
     // when the value is empty and the required prop is
     // passed to the input. showError() is true when the
     // value typed is invalid
-    const className = 'form-group' + (this.props.className || ' ') +
-      (this.showRequired() ? 'required' : this.showError() ? 'error' : '');
+    const className = `form-group ${this.props.className || ' '}
+      ${this.showRequired() ? 'required' : this.showError() ? 'error' : ''}`;
 
     // An error message is returned ONLY if the component is invalid
     // or the server has returned an error message

@@ -4,8 +4,6 @@
 import React from 'react';
 import ReactCSSTransitionGrou from 'react-addons-css-transition-group';
 
-import NavLink from '../../NavLink.jsx';
-
 import DropDown from './DropDown.jsx';
 
 export default class RightSide extends React.Component {
@@ -22,7 +20,11 @@ export default class RightSide extends React.Component {
     return(
       <div>
         <div id="led"></div>
-        <img onClick={ this.toggleDropDown.bind(this) } src="../../../asset/images/avatar.png" />
+        <img
+          onClick={ () => this.toggleDropDown() }
+          src="../../../asset/images/avatar.png"
+          alt="Dropdown"
+        />
         <ReactCSSTransitionGrou
           transitionName="dropDown"
           transitionEnterTimeout={200}
@@ -34,3 +36,7 @@ export default class RightSide extends React.Component {
     )
   }
 }
+
+RightSide.propTypes = {
+  loggedIn: React.PropTypes.object
+};
