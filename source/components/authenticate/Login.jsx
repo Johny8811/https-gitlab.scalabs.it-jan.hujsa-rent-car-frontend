@@ -4,7 +4,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import { Form } from 'formsy-react';
-import Link from '../NavLink.jsx';
+import Link from '../common/NavLink.jsx';
 
 import loginMutation from '../../mutations/loginMutation.jsx';
 import Input from '../formsy/component/Input.jsx';

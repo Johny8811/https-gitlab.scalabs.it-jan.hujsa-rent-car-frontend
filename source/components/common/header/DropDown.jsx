@@ -15,9 +15,12 @@ export default class DropDown extends React.Component {
   render() {
     return(
       <div className="dropdown">
-        <li title="Profile" ><img src="../../asset/images/settings.png" alt="Profile" /></li>
+        <li title="Profile" >
+          <img className="img-30" src="../../asset/images/settings.png" alt="Profile"
+          />
+        </li>
         <li title="Logout" onClick={ () => this.logout() }>
-          <img src="../../asset/images/logout.png" alt="Logout" />
+          <img className="img-30" src="../../asset/images/logout.png" alt="Logout" />
         </li>
       </div>
     )

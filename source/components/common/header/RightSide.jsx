@@ -21,6 +21,7 @@ export default class RightSide extends React.Component {
       <div>
         <div id="led"></div>
         <img
+          className="img-30"
           onClick={ () => this.toggleDropDown() }
           src="../../../asset/images/avatar.png"
           alt="Dropdown"

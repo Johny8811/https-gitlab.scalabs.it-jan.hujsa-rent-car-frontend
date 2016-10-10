@@ -5,7 +5,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 
-import NavLink from '../../NavLink.jsx';
+import NavLink from '../NavLink.jsx';
 
 import RightSide from './RightSide.jsx';
 
@@ -14,7 +14,7 @@ class NavMenu extends React.Component {
   link(loggedIn) {
     const user = loggedIn.user;
     if (user.role === 'guest') {
-      return <Link to="/login"><img src="../../../asset/images/avatar.png" alt="Login" /></Link>;
+      return <Link to="/login"><img className="img-30" src="../../../asset/images/avatar.png" alt="Login" /></Link>;
     }
     return <RightSide loggedIn={loggedIn.id} />
   }
@@ -62,4 +62,3 @@ export default Relay.createContainer(NavMenu, {
     `
   }
 })
-//return <Link to="/login"><img src="../../../asset/images/avatar.png" /></Link>;

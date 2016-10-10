@@ -5,45 +5,38 @@
 
 import _gulp from 'gulp';
 import gulpHelp from 'gulp-help';
+import gutil from 'gulp-util';
 import eslint from 'gulp-eslint';
-//const babel = require('gulp-babel');
-//const webpack = require('webpack');
-//const WebpackDevserver = require('webpack-dev-server');
+import webpack from 'webpack';
+import WebpackDevserver from 'webpack-dev-server';
+import webpackConfig from './webpack.config';
 
 const gulp = gulpHelp(_gulp);
+
+process.env.DEVELOPMENT_SERVER = 8080;
 
 const config = {
   src: 'source/**/*.jsx'
 };
 
-//const config = {
-//  webpackConfig: "./webpack.config.js"
-//};
+gulp.task('webpack-dev-server', "start webpack develoment server on port 8080", () => {
+  const compiler = webpack(webpackConfig);
 
-//gulp.task('webpack-dev-server', () => {
-//    const compiler = webpack({
-//        entry: "./app.js",
-//        output: {
-//            path: "./",
-//            filename: "bundle.js"
-//        }
-//    });
-//
-//    new WebpackDevserver(compiler, {
-//        port: 9000
-//    }).listen(8080, "localhost", (err) => {
-//        if(err) throw new gutil.PluginError("webpack-dev-server", err);
-//        // Server listening
-//        gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
-//    })
-//});
+  new WebpackDevserver(compiler,{
+    historyApiFallback: true
+  })
+    .listen(process.env.DEVELOPMENT_SERVER, (err) => {
+      if(err) console.log(err);
+      // Server listening
+      console.log(`Server listen on port ${process.env.DEVELOPMENT_SERVER}`);
+  })
+});
 
-gulp.task('default', ['webpack-dev-server'], () => {
-    return gulp.src('src/app.js')
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(gulp.dest('./dist'))
+gulp.task('build-app', 'building the application', () => {
+  webpack(webpackConfig, (err, stats) => {
+    if (err) gutil.log("webpack", err);
+    gutil.log(stats);
+  });
 });
 
 gulp.task('lint', 'run eslint on all the source files', () => {

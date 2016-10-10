@@ -88,6 +88,12 @@ nav li {
     list-style: none;
 }
 
+.img-30 {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
 /* start main nav bar */
 #main {
     margin-left: 70px;
@@ -106,18 +112,6 @@ nav li {
     position: static;
     float: right;
     padding-right: 40px;
-}
-
-#side img {
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-}
-
-#side li img {
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
 }
 
 /* active user control */
