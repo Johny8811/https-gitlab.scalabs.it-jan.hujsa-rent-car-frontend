@@ -51,7 +51,7 @@ class AddBikeFormComponent extends React.Component {
     return(
       <Form
         ref={ form => { this.form = form; } }
-        className="baseForm add"
+        className="base-form add"
         onSubmit={ () => this.handleSubmit() }
         onValid={ () => this.enableSubmit() }
         onInvalid={ () => this.disableSubmit() }
@@ -72,7 +72,6 @@ class AddBikeFormComponent extends React.Component {
           placeholder="max speed of bike"
           required
         />
-        <br />
         <input type="submit" value="add Bike" disabled={!this.state.submit} />
       </Form>
     )

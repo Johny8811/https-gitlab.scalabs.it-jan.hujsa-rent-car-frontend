@@ -5,11 +5,12 @@ import React from 'react';
 import Relay from 'react-relay';
 
 import NavMenu from './common/header/NavMenu.jsx';
+import '../css/style.sass';
 
 const App = (props) => (
   <div className="app">
     <NavMenu loggedIn={props.viewer.loggedIn} />
-    <div id="children">{props.children}</div>
+    <div className="children">{props.children}</div>
   </div>
 );
 

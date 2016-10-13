@@ -1,0 +1,51 @@
+@import common
+
+body,
+input,
+a
+  color: $color-777
+  font-family: 'Josefin Slab', serif
+  font-size: 16px
+  text-decoration: none
+
+nav
+  list-style: none
+//display: inline-block
+
+// common things
+.active
+  img
+    -webkit-filter: grayscale(1%) !important
+
+.img-30
+  cursor: pointer
+  height: 30px
+  width: 30px
+
+.app
+  margin: 0 auto
+  text-align: center
+
+// active user control
+.led
+  background-color: $color-080
+  border-radius: 20px
+  height: 8px
+  margin-top: -8px
+  width: 8px
+
+// end side nav bar
+
+// error messages
+.validation-error
+  border-bottom: 1px solid $color-e
+  color: $color-e
+  margin-left: -82px
+  margin-top: 2px
+  position: absolute
+
+// end error messages
+
+@import nav-bar
+@import main
+@import animation

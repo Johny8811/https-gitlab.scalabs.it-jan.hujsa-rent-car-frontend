@@ -15,7 +15,6 @@ class Car extends React.Component {
     return false;
   }
   render() {
-    console.log(this.props.viewer.cars);
     var cars = this.props.viewer.cars.edges.map((car) => (
       <tr key={car.node.id}>
         <td>{car.node.brand}</td>
@@ -31,7 +30,7 @@ class Car extends React.Component {
     );
     return (
       <div>
-        <table id="table">
+        <table className="view-table">
           <tbody>
             <tr>
               <th>Znacka</th>

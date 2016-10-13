@@ -70,7 +70,7 @@ class Login extends React.Component {
       <div className="login">
         <Form
           ref={ form => { this.form = form } }
-          className="baseForm"
+          className="base-form"
           onSubmit={ () => this.handleSubmit() }
           onValid={ () => this.enableSubmit() }
           onInvalid={ () => this.disableSubmit() }
@@ -85,7 +85,7 @@ class Login extends React.Component {
             name="password"
             placeholder="password"
             required
-          /><br /><br />
+          />
           <input type="submit" value="login" disabled={!this.state.submit} />
           <br />
           or

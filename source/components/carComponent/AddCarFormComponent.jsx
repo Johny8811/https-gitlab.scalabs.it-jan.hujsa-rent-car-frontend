@@ -51,7 +51,7 @@ class AddCarFormComponent extends React.Component {
     return(
       <Form
         ref={ form => { this.form = form; } }
-        className="baseForm"
+        className="base-form"
         onSubmit={ () => this.handleSubmit() }
         onValid={ () => this.enableSubmit() }
         onInvalid={ () => this.disableSubmit() }
@@ -72,8 +72,6 @@ class AddCarFormComponent extends React.Component {
           placeholder="car code of vehicle"
           required
         />
-        <br />
-        <br />
         <input type="submit" value="dd Vehicle" disabled={!this.state.submit}/>
       </Form>
     )

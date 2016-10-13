@@ -19,7 +19,7 @@ export default class RightSide extends React.Component {
   render() {
     return(
       <div>
-        <div id="led"></div>
+        <div className="led"></div>
         <img
           className="img-30"
           onClick={ () => this.toggleDropDown() }
@@ -27,7 +27,7 @@ export default class RightSide extends React.Component {
           alt="Dropdown"
         />
         <ReactCSSTransitionGrou
-          transitionName="dropDown"
+          transitionName="drop-down"
           transitionEnterTimeout={200}
           transitionLeaveTimeout={200}
         >

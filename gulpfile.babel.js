@@ -7,6 +7,7 @@ import _gulp from 'gulp';
 import gulpHelp from 'gulp-help';
 import gutil from 'gulp-util';
 import eslint from 'gulp-eslint';
+import sassLint from 'gulp-sass-lint';
 import webpack from 'webpack';
 import WebpackDevserver from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
@@ -16,7 +17,8 @@ const gulp = gulpHelp(_gulp);
 process.env.DEVELOPMENT_SERVER = 8080;
 
 const config = {
-  src: 'source/**/*.jsx'
+  src: 'source/**/*.jsx',
+  sass: 'source/css/*.sass'
 };
 
 gulp.task('webpack-dev-server', "start webpack develoment server on port 8080", () => {
@@ -52,4 +54,11 @@ gulp.task('lint', 'run eslint on all the source files', () => {
     // To have the process exit with an error code (1) on
     // lint error, return the stream and pipe to failAfterError last.
     .pipe(eslint.failAfterError());
+});
+
+gulp.task('sass-lint', 'run sass-lint on all the sass source files', () => {
+  return gulp.src(config.sass)
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
 });

@@ -14,18 +14,22 @@ class NavMenu extends React.Component {
   link(loggedIn) {
     const user = loggedIn.user;
     if (user.role === 'guest') {
-      return <Link to="/login"><img className="img-30" src="../../../asset/images/avatar.png" alt="Login" /></Link>;
+      return(
+        <Link to="/login">
+          <img className="img-30" src="../../../asset/images/avatar.png" alt="Login" />
+        </Link>
+      );
     }
     return <RightSide loggedIn={loggedIn.id} />
   }
   render() {
     return(
-      <div>
+      <div className="navigation ">
         <h1><NavLink to="/" className="home">Rent a Car</NavLink></h1>
-        <nav id="side">
+        <nav className="side">
           {this.link(this.props.loggedIn)}
         </nav>
-        <nav id="main">
+        <nav className="main">
           <li>
             <NavLink to="/cars">
               <img src="../../../asset/images/lambo.jpg" alt="Cars" />
